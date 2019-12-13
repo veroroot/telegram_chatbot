@@ -27,7 +27,13 @@ def send():
     send_url=f"https://api.telegram.org/bot{token}/sendMessage?chat_id={user_id}&text={user_input}"
     requests.get(send_url)
 
-    return render_template('send.html', user_id=user_id, user_input=user_input)
+    return render_template('send.html')
+
+# web hook 개발 테스트(실제할 때에는 token을 주소값으로 사용하는 것을 추천한다.)
+@app.route('/telegram', methods=['POST'])
+def telegram():
+    
+    return 'ok', 200
 
 if __name__=='__main__':
     app.run(debug=True)
